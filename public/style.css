@@ -1,0 +1,10 @@
+div.sign{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.dropdown{
+    margin: auto;
+    margin-top: 5px;
+    z-index: 1;
+}

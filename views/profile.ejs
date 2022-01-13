@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Css link from bootStrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+    <!--Strat Header-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-gradient ">
+        <div class="container">
+          <a class="navbar-brand" href='http://localhost:3000/'>Twins 8/3</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href='http://localhost:3000/home'>Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link active" href='http://localhost:3000/profile'>Profile</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav  my-2 my-lg-0">
+                <a href='http://localhost:3000/signin'><button  type="button" class="btn btn-dark mx-2 my-2">Sing Out</button></a>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!--End Header-->
+    <!--Start Profile Info-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="img/businesswoman.png" alt="Profile Photo" class="rounded-circle container my-5">
+            </div>  
+            <div class="col-md-5 my-5">
+                
+            </div>
+            <div class="col">
+                    <label for="qurey">About me</label>
+                    <textarea name="qurey" id="qurey" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+          
+        </div>
+    </div>
+    <!--End Profile Info-->
+
+    <!--JaveScript from bootStrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
