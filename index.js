@@ -82,6 +82,9 @@ app.get('/home' ,sessionChecker, (req,res) =>{
   res.render('home.ejs',{users:[]});
 
 } ) 
+app.get('/chat',sessionChecker,(req,res)=>{
+  res.render('chat.ejs');
+})
 app.get('/profile',sessionChecker,(req,res)=>{
   const body =req.body;
   console.log(req.session.body)
