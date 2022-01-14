@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const session = require('express-session');
 const port = 3000;
 const mongoose = require("mongoose");
 const ejs = require('ejs');
@@ -9,6 +10,11 @@ const User = require('./User.js');
 const { find } = require('./User.js');
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(session({
+  secret: 'Fue-key',
+  resave: false,
+  saveUninitialized: false,
+}))
 
 const mongoUri = "mongodb+srv://admin:FUE123456@cluster0.wpgz1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
@@ -44,8 +50,12 @@ app.get('/home' , (req,res) =>{
   res.render('home.ejs');
 
 } ) 
-app.get('/profile',(req,res)=>{
-  res.render('profile.ejs');
+app.get('/profile',async (req,res)=>{
+  const body =req.body;
+  console.log(req.body)
+ const users=await User.find({"firstName":body.firstName})
+ console.log(users);
+  res.render('profile.ejs',{users:users});
 })
 
 
@@ -88,8 +98,9 @@ app.post('/login', async (req, res) => {
 
   });
   app.post('/search',async(req,res)=>{
+    const body =req.body;
     console.log(req.body)
-   let users=await User.find({"job":req.body.job})
+   const users=await User.find({"job":body.job})
    console.log(users);
   res.render('home.ejs',{users:users})
     

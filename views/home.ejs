@@ -44,14 +44,15 @@
             <button class="btn btn-primary mt-3">Serach</button>
         </div>
         </form>
-        <%users.forEach(user=>{%>
+        <%users.forEach(users=>{%>
       <div class="container my-3 justify-content-center">
         <div class="row">
             <div class="col  my-1">
                 <div class="card w-60 position-relative bg-light text-dark">
                   <div class="card-body">
-                    <h5 class="card-title"><%-users.job%></h5>
-                    <p class="card-text">id</p>
+                    <h5 class="card-title"><%=users.firstName%> <%=users.lastName%></h5>
+                    <p class="card-text">Email (<%=users.email%>) Job title <%=users.job%></p>
+                    <p class="card-text"><%=users.moreInfo%></p>
                     <a href="#" class="btn btn-primary position-absolute bottom-0 end-0 my-3 mx-2">Chat now</a>
                   </div>
                 </div>
