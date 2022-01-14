@@ -11,6 +11,7 @@ const { find } = require('./User.js');
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(session({
+  key: 'future_University',
   secret: 'Fue-key',
   resave: false,
   saveUninitialized: false,
