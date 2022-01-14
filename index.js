@@ -84,7 +84,6 @@ app.get('/home' ,sessionChecker, (req,res) =>{
 } ) 
 app.get('/profile',sessionChecker,(req,res)=>{
   const body =req.body;
-  const firstName=req.session.body.firstName;
   console.log(req.session.body)
  const users=User.find({"firstName":body.firstName},function(err,users){
     console.log(users);
