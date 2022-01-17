@@ -16,6 +16,8 @@ app.use(cookieParser());
 var path = require('path');
 const User = require('./User.js');
 const { find } = require('./User.js');
+const { Session } = require('inspector');
+const { signedCookie } = require('cookie-parser');
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(session({
@@ -50,6 +52,7 @@ mongoose.connect( mongoUri , { useNewUrlParser: true, useUnifiedTopology: true  
     // middleware function to check for logged-in users
     var sessionChecker = (req, res, next) => {
       if (req.session.user && req.cookies.future_University) {
+        console.log(sessionChecker)
         res.redirect("/home");
       } else {
         next();
@@ -87,11 +90,8 @@ app.get('/chat',sessionChecker,(req,res)=>{
 })
 app.get('/profile',sessionChecker,(req,res)=>{
   const body =req.body;
-  console.log(req.session.body)
- const users=User.find({"firstName":body.firstName},function(err,users){
-    console.log(users);
-    res.render('profile.ejs',{users:users});
-  })
+  console.log(body)
+  res.render('profile.ejs');
 })
 app.post('/signup',sessionChecker , async (req, res) => {
     const body =  req.body;
@@ -110,15 +110,17 @@ app.post('/signup',sessionChecker , async (req, res) => {
 
 app.post('/login',sessionChecker, async (req, res) => {
          const body =  req.body;
-         console.log(body);
-         const email = body.email;
-         const password = body.password;
-       const user = await User.findOne({"email": email, "password" : password});
+         const sass=req.session
+         console.log(body,sass);
+          sass.email = body.email;
+         sass.password = body.password;
+       const user = await User.findOne({"email": sass.email, "password" :   sass.password});
        console.log(user);
        if(user !== null)
        {
            // redirect to home page
            console.log("Success")
+       console.log(user);
            res.render('home.ejs',{users:[]});
        }
        else{
@@ -141,9 +143,9 @@ app.post('/login',sessionChecker, async (req, res) => {
 app.get("/logout",sessionChecker, (req, res) => {
   if (req.session.user && req.cookies.future_University) {
     res.clearCookie("future_University");
-    res.redirect("/");
+    res.redirect("/home");
   } else {
-    res.redirect("/aboutUs");
+    res.redirect("/");
   }
 });
 app.listen(port, () => {
