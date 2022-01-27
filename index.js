@@ -76,7 +76,7 @@ app.get('/signin',sessionChecker, (req, res) => {
 
 
 app.get('/',(req,res)=>{
-  res.render('aboutUs.ejs')
+  res.render('index.ejs')
 })
 app.get('/register' , (req,res) =>{
     res.render('register.ejs');
